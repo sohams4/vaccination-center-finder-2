@@ -9,9 +9,9 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: 'Application' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '14.17.3' # set this to the node version to use
   RESOURCEGROUPNAME: 'vaccination-center-finder-2-rg'
-  LOCATION: 'West India'
+  LOCATION: 'South India'
   HOSTINGPLANNAME: 'vaccination-center-finder-2-plan'
-  APPINSIGHTLOCATION: 'West India'
+  APPINSIGHTLOCATION: 'South India'
   SKU: 'S1 Standard'
 
 jobs:
