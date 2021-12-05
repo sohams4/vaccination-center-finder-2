@@ -11,7 +11,7 @@ env:
   RESOURCEGROUPNAME: 'vaccination-center-finder-2-rg'
   LOCATION: 'West India'
   HOSTINGPLANNAME: 'vaccination-center-finder-2-plan'
-  APPINSIGHTLOCATION: 'West India'
+  APPINSIGHTLOCATION: 'South India'
   SKU: 'S1 Standard'
 
 jobs:
