@@ -52,18 +52,18 @@ jobs:
           path: buildartifacts
 
       # Archive Arm templates
-      - name: Archive ArmTemplates
-        uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -qq -r ./deploymenttemplates/armtemplates.zip ./armTemplates
+      #- name: Archive ArmTemplates
+      # uses: montudor/action-zip@v0.1.0
+      #with:
+      # args: zip -qq -r ./deploymenttemplates/armtemplates.zip ./armTemplates
 
       # Uploading Arm Templates to artifacts
-      - name: Upload Arm templates to Artifact
-        continue-on-error: false
-        uses: actions/upload-artifact@v2
-        with:
-          name: deploymenttemplates
-          path: deploymenttemplates
+      #- name: Upload Arm templates to Artifact
+      # continue-on-error: false
+      #uses: actions/upload-artifact@v2
+      #with:
+      # name: deploymenttemplates
+      #path: deploymenttemplates
 
   Deploy:
     name: Deploy to azure web app
@@ -84,17 +84,17 @@ jobs:
           unzip -qq ./buildartifacts/Application.zip -d .
 
       # Downloading Arm Templates
-      - name: Download an Arm template
-        uses: actions/download-artifact@v2
-        continue-on-error: false
-        with:
-          name: deploymenttemplates
-          path: deploymenttemplates
+      # - name: Download an Arm template
+      #  uses: actions/download-artifact@v2
+      # continue-on-error: false
+      #with:
+      # name: deploymenttemplates
+      #path: deploymenttemplates
 
       # Uzipping Arm template directory
-      - name: unzipping arm artifact
-        run: |
-          unzip -qq ./deploymenttemplates/armtemplates.zip -d .
+      #- name: unzipping arm artifact
+      # run: |
+      #   unzip -qq ./deploymenttemplates/armtemplates.zip -d .
 
       # Login to azure
       - name: Login to Azure
@@ -104,13 +104,13 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       # Deploy Arm template
-      - name: Deploy ARM Template
-        uses: azure/CLI@v1
-        continue-on-error: false
-        with:
-          inlineScript: |
-            az group create --name "${{ env.RESOURCEGROUPNAME }}" --location "${{ env.LOCATION }}"
-            az deployment group create --resource-group "${{ env.RESOURCEGROUPNAME }}" --template-file ./armTemplates/windows-webapp-template.json --parameters webAppName="${{ env.AZURE_WEBAPP_NAME }}" hostingPlanName="${{ env.HOSTINGPLANNAME }}" appInsightsLocation="${{ env.APPINSIGHTLOCATION }}" sku="${{ env.SKU }}"
+      #- name: Deploy ARM Template
+      # uses: azure/CLI@v1
+      #continue-on-error: false
+      #with:
+      # inlineScript: |
+      #   az group create --name "${{ env.RESOURCEGROUPNAME }}" --location "${{ env.LOCATION }}"
+      #  az deployment group create --resource-group "${{ env.RESOURCEGROUPNAME }}" --template-file ./armTemplates/windows-webapp-template.json --parameters webAppName="${{ env.AZURE_WEBAPP_NAME }}" hostingPlanName="${{ env.HOSTINGPLANNAME }}" appInsightsLocation="${{ env.APPINSIGHTLOCATION }}" sku="${{ env.SKU }}"
 
       # Deploy web app on azure
       - name: 'Deploy to Azure WebApp'
