@@ -9,6 +9,7 @@ import { makeData } from './utils';
 
 const BASE_URL = 'https://cdn-api.co-vin.in/api';
 const PINCODE_ENDPOINT = '/v2/appointment/sessions/public/findByPin';
+const logo = 'https://soham04.blob.core.windows.net/covid/covid.png';
 // const  DISTRICT_ENDPOINT = "/v2/appointment/sessions/public/findByDistrict";
 
 const columns = [
@@ -73,6 +74,7 @@ const App = () => {
 
   return (
     <main>
+      <img src={logo} alt='logo' />
       <h1 className='text-2xl font-bold leading-7 text-grey-900 sm:text-3xl sm:truncate'>
         Find Vaccination Center Near You
       </h1>
