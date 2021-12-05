@@ -33,13 +33,6 @@ jobs:
           npm install
           npm run build --if-present
 
-      - name: Run unit tests
-        continue-on-error: false
-        run: |
-          cd Tests
-          npm install
-          gulp unittest
-
       - name: Creating artifact directories
         run: |
           mkdir buildartifacts
